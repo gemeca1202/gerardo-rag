@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+data/raw/*.pdf
+data/processed/index.jsonl
+data/processed/manifest.json
+.streamlit/secrets.toml
+.streamlit/secrets.toml
