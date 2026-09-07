@@ -12,12 +12,12 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 client = Groq(api_key=GROQ_API_KEY)
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 :root {
-    --brand: #a700ff;
-    --brand-soft: #d452ff;
-    --panel: #0d071b;
+    --brand: #d89b00;
+    --brand-soft: #f3b700;
+    --ink: #202124;
 }
 
 .stApp {
@@ -27,8 +27,8 @@ st.markdown("""
 }
 
 .block-container {
-    max-width: 1280px;
-    padding-top: 2rem;
+    max-width: 1180px;
+    padding-top: 3rem;
     padding-bottom: 9rem;
 }
 
@@ -39,39 +39,28 @@ h1, h2, h3 {
 
 .profile-card {
     position: relative;
-    overflow: hidden;
-    background:
-        linear-gradient(180deg, rgba(167, 0, 255, 0.95) 0 11%, transparent 11%),
-        linear-gradient(145deg, #15052e 0%, #090511 66%);
-    border: 1px solid rgba(212, 82, 255, 0.55);
-    border-radius: 0;
-    box-shadow: 0 18px 48px rgba(30, 0, 56, 0.36);
-    padding: 2.1rem 1.6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(32, 33, 36, 0.10);
+    border-top: 7px solid var(--brand-soft);
+    border-radius: 12px;
+    box-shadow: 0 14px 38px rgba(32, 33, 36, 0.10);
+    padding: 1.6rem;
     height: 100%;
-    color: #fff;
+    color: var(--ink);
 }
 
 .profile-card::before {
-    content: "GERARDO MENA";
-    position: absolute;
-    top: 4.1rem;
-    left: -5.6rem;
-    color: rgba(255, 255, 255, 0.14);
-    font: 800 1.8rem/1 "Montserrat", sans-serif;
-    letter-spacing: 0.08em;
-    transform: rotate(-90deg);
-    white-space: nowrap;
+    content: "";
 }
 
 .profile-card [data-testid="stImage"] {
-    position: relative;
-    z-index: 1;
-    margin: 0.9rem 0 1.4rem 2.2rem;
+    margin: 0.2rem 0 1.2rem;
 }
 
 .profile-card [data-testid="stImage"] img {
-    border: 4px solid var(--brand);
-    filter: grayscale(100%) contrast(1.08);
+    border: 3px solid var(--brand-soft);
+    border-radius: 8px;
+    filter: none;
 }
 
 .eyebrow {
@@ -86,13 +75,13 @@ h1, h2, h3 {
 .hero-name {
     color: inherit;
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(2.5rem, 6vw, 5.3rem);
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
     font-weight: 800;
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-    margin: 0.3rem 0 1.3rem;
-    text-transform: uppercase;
-    text-shadow: 4px 4px 0 rgba(167, 0, 255, 0.30);
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    margin: 0.2rem 0 1rem;
+    text-transform: none;
+    text-shadow: none;
 }
 
 .hero-description {
@@ -127,7 +116,7 @@ h1, h2, h3 {
     bottom: 0.2rem;
     left: 0.25rem;
     width: 2px;
-    background: var(--brand);
+    background: rgba(216, 155, 0, 0.62);
 }
 
 .timeline-item { position: relative; }
@@ -139,7 +128,7 @@ h1, h2, h3 {
     width: 0.48rem;
     height: 0.48rem;
     background: var(--brand-soft);
-    border: 4px solid var(--panel);
+    border: 4px solid rgba(255, 255, 255, 0.9);
     border-radius: 50%;
 }
 .timeline-item strong {
@@ -157,7 +146,7 @@ h1, h2, h3 {
 }
 
 [data-testid="stTabs"] [data-baseweb="tab"] {
-    border-radius: 0;
+    border-radius: 8px 8px 0 0;
     color: inherit;
     opacity: 0.72;
     font-family: "Montserrat", sans-serif;
@@ -166,15 +155,16 @@ h1, h2, h3 {
 }
 
 [data-testid="stTabs"] [aria-selected="true"] {
-    background: rgba(167, 0, 255, 0.12);
+    background: rgba(243, 183, 0, 0.15);
     color: var(--brand);
     opacity: 1;
 }
 
 [data-testid="stChatMessage"] {
-    background: rgba(127, 127, 127, 0.10);
-    border-left: 3px solid var(--brand);
-    border-radius: 0 12px 12px 0;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(32, 33, 36, 0.10);
+    border-left: 3px solid var(--brand-soft);
+    border-radius: 12px;
     padding: 0.35rem 0.7rem;
     margin-bottom: 0.65rem;
 }
@@ -191,16 +181,15 @@ h1, h2, h3 {
 }
 
 [data-testid="stChatInput"] textarea {
-    background: transparent !important;
-    border: 1px solid rgba(127, 127, 127, 0.40) !important;
-    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(216, 155, 0, 0.55) !important;
+    border-radius: 10px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 700px) {
-    .block-container { padding-top: 1rem; }
+    .block-container { padding-top: 1.5rem; }
     .hero-name { font-size: 2.25rem; }
-    .profile-card [data-testid="stImage"] { margin-left: 1.5rem; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -252,13 +241,13 @@ with c1:
     st.markdown('<div class="profile-card">', unsafe_allow_html=True)
     if foto_path.exists():
         st.image(Image.open(foto_path), width=180)
-    st.markdown("<p class='eyebrow'>Perfil profesional · 2026</p>", unsafe_allow_html=True)
+    st.markdown("<p class='eyebrow'>Perfil profesional</p>", unsafe_allow_html=True)
     st.markdown("**Lic. en Mercadotecnia y Comercio Digital**")
     st.markdown("<p class='contact-item'>✉️ <strong>gemeca1202@gmail.com</strong></p><p class='contact-item'>📍 Oaxaca, México</p><p class='contact-item'>🎓 Céd. Prof. 13804627</p>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 with c2:
-    st.markdown("<p class='eyebrow'>Portafolio interactivo · Experiencia · IA</p>", unsafe_allow_html=True)
-    st.markdown("<div class='hero-name'>Gerardo<br>Mena Castillo</div>", unsafe_allow_html=True)
+    st.markdown("<p class='eyebrow'>Portafolio · Experiencia · IA</p>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-name'>Gerardo Mena<br>Castillo</div>", unsafe_allow_html=True)
     st.markdown("<div class='hero-description'>Profesional con experiencia en gestión administrativa, trámites institucionales y herramientas digitales, aplicada tanto en el sector privado como en proyectos vinculados a instituciones públicas (IMSS, CFE y gobierno municipal). Combino experiencia operativa, atención a clientes institucionales y una sólida base en mercadotecnia y comercio digital.</div>", unsafe_allow_html=True)
     st.markdown("""
     <div class='timeline'>
