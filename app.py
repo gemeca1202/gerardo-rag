@@ -15,18 +15,12 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
 :root {
-    --ink: #102a43;
-    --muted: #627d98;
     --brand: #0b5cab;
-    --accent: #e9f3fc;
-    --surface: #ffffff;
 }
 
 .stApp {
-    background:
-        radial-gradient(circle at 92% 2%, #d9efff 0, transparent 28rem),
-        linear-gradient(180deg, #f7fbff 0%, #eef5fa 100%);
-    color: var(--ink);
+    background: transparent;
+    color: inherit;
     font-family: "DM Sans", sans-serif;
 }
 
@@ -37,15 +31,15 @@ st.markdown("""
 }
 
 h1, h2, h3 {
-    color: var(--ink) !important;
+    color: inherit !important;
     font-family: "Playfair Display", serif !important;
 }
 
 .profile-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #d9e6f1;
+    background: rgba(127, 127, 127, 0.10);
+    border: 1px solid rgba(127, 127, 127, 0.28);
     border-radius: 22px;
-    box-shadow: 0 14px 40px rgba(16, 42, 67, 0.08);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
     padding: 1.4rem;
     height: 100%;
 }
@@ -66,38 +60,42 @@ h1, h2, h3 {
 }
 
 .hero-description {
-    color: #486581;
+    color: inherit;
+    opacity: 0.78;
     font-size: 1.05rem;
     line-height: 1.75;
     max-width: 760px;
 }
 
 .contact-item {
-    color: #486581;
+    color: inherit;
+    opacity: 0.78;
     font-size: 0.9rem;
     margin: 0.45rem 0;
 }
 
 [data-testid="stTabs"] [data-baseweb="tab-list"] {
     gap: 0.5rem;
-    border-bottom: 1px solid #d9e6f1;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.28);
 }
 
 [data-testid="stTabs"] [data-baseweb="tab"] {
     border-radius: 10px 10px 0 0;
-    color: #627d98;
+    color: inherit;
+    opacity: 0.72;
     font-weight: 600;
     padding: 0.7rem 1rem;
 }
 
 [data-testid="stTabs"] [aria-selected="true"] {
-    background: #e9f3fc;
+    background: rgba(127, 127, 127, 0.16);
     color: var(--brand);
+    opacity: 1;
 }
 
 [data-testid="stChatMessage"] {
-    background: rgba(255, 255, 255, 0.76);
-    border: 1px solid #e0ebf3;
+    background: rgba(127, 127, 127, 0.10);
+    border: 1px solid rgba(127, 127, 127, 0.22);
     border-radius: 16px;
     padding: 0.35rem 0.7rem;
     margin-bottom: 0.65rem;
@@ -115,10 +113,10 @@ h1, h2, h3 {
 }
 
 [data-testid="stChatInput"] textarea {
-    background: #ffffff !important;
-    border: 1px solid #c9dceb !important;
+    background: transparent !important;
+    border: 1px solid rgba(127, 127, 127, 0.40) !important;
     border-radius: 14px !important;
-    box-shadow: 0 10px 30px rgba(16, 42, 67, 0.14);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 700px) {
