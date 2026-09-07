@@ -12,17 +12,119 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 client = Groq(api_key=GROQ_API_KEY)
 st.markdown("""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --ink: #102a43;
+    --muted: #627d98;
+    --brand: #0b5cab;
+    --accent: #e9f3fc;
+    --surface: #ffffff;
+}
+
+.stApp {
+    background:
+        radial-gradient(circle at 92% 2%, #d9efff 0, transparent 28rem),
+        linear-gradient(180deg, #f7fbff 0%, #eef5fa 100%);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+}
+
+.block-container {
+    max-width: 1180px;
+    padding-top: 3rem;
+    padding-bottom: 9rem;
+}
+
+h1, h2, h3 {
+    color: var(--ink) !important;
+    font-family: "Playfair Display", serif !important;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #d9e6f1;
+    border-radius: 22px;
+    box-shadow: 0 14px 40px rgba(16, 42, 67, 0.08);
+    padding: 1.4rem;
+    height: 100%;
+}
+
+.eyebrow {
+    color: var(--brand);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero-name {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.02;
+    margin: 0.2rem 0 0.75rem;
+}
+
+.hero-description {
+    color: #486581;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 760px;
+}
+
+.contact-item {
+    color: #486581;
+    font-size: 0.9rem;
+    margin: 0.45rem 0;
+}
+
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
+    gap: 0.5rem;
+    border-bottom: 1px solid #d9e6f1;
+}
+
+[data-testid="stTabs"] [data-baseweb="tab"] {
+    border-radius: 10px 10px 0 0;
+    color: #627d98;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+}
+
+[data-testid="stTabs"] [aria-selected="true"] {
+    background: #e9f3fc;
+    color: var(--brand);
+}
+
+[data-testid="stChatMessage"] {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid #e0ebf3;
+    border-radius: 16px;
+    padding: 0.35rem 0.7rem;
+    margin-bottom: 0.65rem;
+}
+
 [data-testid="stChatInput"] {
     position: fixed;
-    bottom: 20px;
-    width: 60%!important;
+    bottom: 18px;
+    width: min(90%, 820px)!important;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-    background: #0e1117;
-    padding-top: 10px;
+    background: transparent;
+    padding-top: 0;
 }
-.block-container { padding-bottom: 100px; }
+
+[data-testid="stChatInput"] textarea {
+    background: #ffffff !important;
+    border: 1px solid #c9dceb !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 30px rgba(16, 42, 67, 0.14);
+}
+
+@media (max-width: 700px) {
+    .block-container { padding-top: 1.5rem; }
+    .hero-name { font-size: 2.25rem; }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -70,24 +172,22 @@ cv_completo=cv_base+"\n\nPORTAFOLIO:\n"+texto_extra
 
 c1,c2=st.columns([1,3])
 with c1:
+    st.markdown('<div class="profile-card">', unsafe_allow_html=True)
     if foto_path.exists():
         st.image(Image.open(foto_path), width=180)
-    st.markdown("**Lic. en Mercadotecnia y Comercio Digital**\n\n📧 gemeca1202@gmail.com\n\nCéd. Prof. 13804627\n\nOaxaca, México")
-with c2:
-    st.title("GERARDO MENA CASTILLO")
+    st.markdown("<p class='eyebrow'>Perfil profesional</p>", unsafe_allow_html=True)
     st.markdown("**Lic. en Mercadotecnia y Comercio Digital**")
-    st.markdown("""
-    Profesional con experiencia en gestión administrativa, trámites institucionales y herramientas digitales,
-    aplicada tanto en el sector privado como en proyectos vinculados a instituciones públicas (IMSS, CFE,
-    gobierno municipal). He gestionado procesos, documentación y clientes institucionales, y cuento con
-    experiencia práctica en plataformas digitales (Google Ads, Google My Business, gestión de contenido y redes).
-    Complemento esta base con más de 10 años liderando operaciones propias, con capacidad demostrada de aprender
-    procesos técnicos nuevos y resolverlos con autonomía. Licenciado en Mercadotecnia y Comercio Digital,
-    con cédula profesional vigente.
-    """)
+    st.markdown("<p class='contact-item'>✉️ gemeca1202@gmail.com</p><p class='contact-item'>📍 Oaxaca, México</p><p class='contact-item'>🎓 Céd. Prof. 13804627</p>", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+with c2:
+    st.markdown("<p class='eyebrow'>Portafolio · Experiencia · Conversación</p>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-name'>Gerardo Mena<br>Castillo</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-description'>Profesional con experiencia en gestión administrativa, trámites institucionales y herramientas digitales, aplicada tanto en el sector privado como en proyectos vinculados a instituciones públicas (IMSS, CFE y gobierno municipal). Combino experiencia operativa, atención a clientes institucionales y una sólida base en mercadotecnia y comercio digital.</div>", unsafe_allow_html=True)
 
-tab1, tab2 = st.tabs(["💬 Chatea con mi CV", "📸 Evidencias"])
+st.markdown("<br>", unsafe_allow_html=True)
+tab1, tab2 = st.tabs(["💬 Conversa con mi experiencia", "📸 Portafolio visual"])
 with tab1:
+    st.caption("Haz una pregunta sobre mi trayectoria, habilidades, estudios o proyectos.")
     chat_container = st.container(height=500)
     with chat_container:
         if "m" not in st.session_state:
